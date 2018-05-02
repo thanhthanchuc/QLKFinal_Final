@@ -1,0 +1,16 @@
+﻿@model QLKFinal.Models.Suplier
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.DisplayName</h2>
+
+<ul>
+    <li>Tên: @Model.DisplayName</li>
+    <li>Ngày gia nhập: @Model.ContractDate.Value.ToShortDateString()</li>
+    <li>Địa chỉ liên hệ: @Model.Addresss</li>
+    <li>Email: @Model.Email</li>
+    <li>Số điện thoại liên lạc: @Model.PhoneNumber</li>
+    <li>Thông tin khác: @Model.MoreInfo</li>
+</ul>
+

@@ -1,0 +1,36 @@
+﻿@model QLKFinal.ViewModel.SuplierFormViewModel
+@{
+    ViewBag.Title = "SuplierForm";
+}
+
+<h2>Thêm nhà cung cấp</h2>
+
+@using (Html.BeginForm("Save", "Suplier"))
+{
+    <div class="form-group">
+        @Html.LabelFor(s => s.Suplier.DisplayName)
+        @Html.TextBoxFor(s => s.Suplier.DisplayName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Suplier.ContractDate)
+        @Html.TextBoxFor(s => s.Suplier.ContractDate, "{0:d/MM/yyyy}",new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Suplier.Email)
+        @Html.TextBoxFor(s => s.Suplier.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Suplier.Addresss)
+        @Html.TextBoxFor(s => s.Suplier.Addresss, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Suplier.MoreInfo)
+        @Html.TextBoxFor(s => s.Suplier.MoreInfo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Suplier.PhoneNumber)
+        @Html.TextBoxFor(s => s.Suplier.PhoneNumber, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(s=>s.Suplier.Id)
+    <button type="submit" class="btn btn-primary">Tạo mới</button>
+}
