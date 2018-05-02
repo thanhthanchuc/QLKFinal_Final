@@ -1,0 +1,31 @@
+﻿@model IEnumerable<QLKFinal.Models.Objectss>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vật tư</h2>
+
+<table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>Mã vật tư</th>
+        <th>Tên vật tư</th>
+        <th>Số lượng</th>
+        <th>Đơn vị</th>
+        <th>Nhà cung cấp</th>
+        <th>Thông tin chi tiết</th>
+    </tr>
+    </thead>
+    @foreach (var objects in Model)
+    {
+        <tr>
+            <td>@objects.Id</td>
+            <td>@Html.ActionLink(objects.DisplayName, "Edit", "Objectss", new {id = objects.Id}, null)</td>
+            <td>@objects.Count</td>
+            <td>@objects.Unit.DisplayName</td>
+            <td>@objects.Suplier.DisplayName</td>
+            <td>@Html.ActionLink("Chi tiết", "Details", "Objectss", new {id = objects.Id}, null)</td>
+        </tr>
+    }
+</table>
+

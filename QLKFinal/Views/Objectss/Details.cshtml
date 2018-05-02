@@ -1,0 +1,16 @@
+﻿@model QLKFinal.Models.Objectss
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.DisplayName</h2>
+
+<ul>
+    <li>Mã vật tư: @Model.Id</li>
+    <li>Tên vật tư @Model.DisplayName</li>
+    <li>Số lượng @Model.Count @Model.Unit.DisplayName</li>
+    <li>Ngày thêm @Model.DateAdded.Value.ToShortDateString()</li>
+    <li>Nhà cung cấp @Model.Suplier.DisplayName</li>
+</ul>

@@ -1,0 +1,34 @@
+﻿@model QLKFinal.ViewModel.ObjectFormViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm vật phẩm</h2>
+
+@using (Html.BeginForm("Save", "Objectss"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Objectss.DisplayName)
+        @Html.TextBoxFor(m => m.Objectss.DisplayName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Objectss.DateAdded)
+        @Html.TextBoxFor(m => m.Objectss.DateAdded, "{0:d/MM/yyyy}",new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Objectss.Count)
+        @Html.TextBoxFor(m => m.Objectss.Count, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Objectss.SuplierId)
+        @Html.DropDownListFor(m => m.Objectss.SuplierId, new SelectList(Model.Supliers, "Id", "DisplayName"), "Nhà cung cấp",new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Objectss.UnitId)
+        @Html.DropDownListFor(m => m.Objectss.UnitId, new SelectList(Model.Units, "Id", "DisplayName"), "Đơn vị",new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m => m.Objectss.Id)
+    <button type="submit" class="btn btn-primary">Lưu</button>    
+}

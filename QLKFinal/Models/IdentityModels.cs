@@ -20,6 +20,9 @@ namespace QLKFinal.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Objectss> Objectsses { get; set; }
+        public DbSet<Suplier> Supliers { get; set; }
+        public DbSet<Unit> Units { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

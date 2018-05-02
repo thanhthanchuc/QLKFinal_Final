@@ -192,12 +192,18 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ObjectssController.cs" />
+    <Compile Include="Controllers\SuplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201805020645367_EntityModels.cs" />
     <Compile Include="Migrations\201805020645367_EntityModels.Designer.cs">
       <DependentUpon>201805020645367_EntityModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805020649136_EntityModels1.cs" />
+    <Compile Include="Migrations\201805020649136_EntityModels1.Designer.cs">
+      <DependentUpon>201805020649136_EntityModels1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -208,6 +214,7 @@
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\ObjectFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -265,9 +272,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Objectss\Index.cshtml" />
+    <Content Include="Views\Objectss\ObjectForm.cshtml" />
+    <Content Include="Views\Objectss\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Suplier\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -288,6 +299,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805020645367_EntityModels.resx">
       <DependentUpon>201805020645367_EntityModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805020649136_EntityModels1.resx">
+      <DependentUpon>201805020649136_EntityModels1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
