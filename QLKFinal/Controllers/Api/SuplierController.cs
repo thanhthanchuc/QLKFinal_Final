@@ -26,22 +26,22 @@ namespace QLKFinal.Controllers.Api
         }
 
         // GET/api/suplier/1
-        public SuplierDto GetSuplier(int id)
+        public IHttpActionResult GetSuplier(int id)
         {
             var suplier = _context.Supliers.SingleOrDefault(s => s.Id == id);
 
-            if(suplier==null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (suplier == null)
+                return NotFound();
 
-            return Mapper.Map<Suplier, SuplierDto>(suplier);
+            return Ok(Mapper.Map<Suplier, SuplierDto>(suplier));
         }
 
         //POST/api/supliers
         [HttpPost]
-        public SuplierDto CreateSuplier(SuplierDto suplierDto)
+        public IHttpActionResult CreateSuplier(SuplierDto suplierDto)
         {
-            if(!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            if (!ModelState.IsValid)
+                return BadRequest();
 
 
             var suplier = Mapper.Map<SuplierDto, Suplier>(suplierDto);
@@ -49,7 +49,7 @@ namespace QLKFinal.Controllers.Api
             _context.SaveChanges();
 
             suplierDto.Id = suplier.Id;
-            return suplierDto;
+            return Created(new Uri(Request.RequestUri + "/" + suplier.Id), suplierDto);
         }
 
         //PUT/api/supliers/1

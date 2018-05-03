@@ -28,22 +28,22 @@ namespace QLKFinal.Controllers.Api
         }
 
         // GET / api/objectsses/1
-        public ObjectssDto GetObjectss(int id)
+        public IHttpActionResult GetObjectss(int id)
         {
             var objectss = _context.Objectsses.SingleOrDefault(o => o.Id == id);
 
-            if(objectss==null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (objectss == null)
+                return NotFound();
 
-            return Mapper.Map<Objectss, ObjectssDto>(objectss);
+            return Ok(Mapper.Map<Objectss, ObjectssDto>(objectss));
         }
 
         // POST /api/objectsses
         [HttpPost]
-        public ObjectssDto CreateObjectss(ObjectssDto objectssDto)
+        public IHttpActionResult CreateObjectss(ObjectssDto objectssDto)
         {
-            if(!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            if (!ModelState.IsValid)
+                return BadRequest();
 
             var objectss = Mapper.Map<ObjectssDto, Objectss>(objectssDto);
             _context.Objectsses.Add(objectss);
@@ -51,7 +51,7 @@ namespace QLKFinal.Controllers.Api
 
             objectssDto.Id = objectss.Id;
 
-            return objectssDto;
+            return Created(new Uri(Request.RequestUri + "/" + objectss.Id), objectssDto);
         }
 
         //PUT/api/objectsses/1
