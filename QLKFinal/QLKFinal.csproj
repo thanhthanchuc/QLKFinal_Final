@@ -208,6 +208,8 @@
     <Compile Include="Controllers\OrtherControllers\CustomerController.cs" />
     <Compile Include="Controllers\SuplierController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="DTOS\ObjectssDto.cs" />
+    <Compile Include="DTOS\SuplierDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
