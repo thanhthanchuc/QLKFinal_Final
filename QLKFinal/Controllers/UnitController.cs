@@ -23,6 +23,7 @@ namespace QLKFinal.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Unit unit)
         {
             if (unit.Id == 0)
@@ -45,7 +46,10 @@ namespace QLKFinal.Controllers
 
         public ActionResult New()
         {
-            var viewModel = new UnitFormViewModel();
+            var viewModel = new UnitFormViewModel
+            {
+                Unit = new Unit()
+            };
             return View("UnitForm", viewModel);
         }
 

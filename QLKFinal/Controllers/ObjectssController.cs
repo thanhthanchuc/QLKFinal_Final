@@ -29,6 +29,7 @@ namespace QLKFinal.Controllers
             var suplier = _context.Supliers.ToList();
             var viewModel = new ObjectFormViewModel
             {
+                Objectss = new Objectss(),
                 Units = units,
                 Supliers = suplier
             };
@@ -37,8 +38,19 @@ namespace QLKFinal.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Objectss objectss)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ObjectFormViewModel
+                {
+                    Objectss = objectss,
+                    Units = _context.Units.ToList(),
+                    Supliers = _context.Supliers.ToList()
+                };
+                return View("ObjectForm", viewModel);
+            }
             if (objectss.Id == 0)
                 _context.Objectsses.Add(objectss);
             else

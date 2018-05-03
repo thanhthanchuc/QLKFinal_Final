@@ -7,17 +7,21 @@
 
 @using (Html.BeginForm("Save", "Suplier"))
 {
+    @Html.ValidationSummary(true, "Vui lòng thêm tất cả các trường còn thiếu!")
     <div class="form-group">
         @Html.LabelFor(s => s.Suplier.DisplayName)
         @Html.TextBoxFor(s => s.Suplier.DisplayName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s=>s.Suplier.DisplayName)
     </div>
     <div class="form-group">
         @Html.LabelFor(s => s.Suplier.ContractDate)
-        @Html.TextBoxFor(s => s.Suplier.ContractDate, "{0:d/MM/yyyy}",new { @class = "form-control" })
+        @Html.TextBoxFor(s => s.Suplier.ContractDate, "{0:d/MM/yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Suplier.ContractDate)
     </div>
     <div class="form-group">
         @Html.LabelFor(s => s.Suplier.Email)
         @Html.TextBoxFor(s => s.Suplier.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Suplier.Email)
     </div>
     <div class="form-group">
         @Html.LabelFor(s => s.Suplier.Addresss)
@@ -32,5 +36,6 @@
         @Html.TextBoxFor(s => s.Suplier.PhoneNumber, new { @class = "form-control" })
     </div>
     @Html.HiddenFor(s=>s.Suplier.Id)
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Tạo mới</button>
 }

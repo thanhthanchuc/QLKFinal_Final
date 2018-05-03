@@ -26,13 +26,23 @@ namespace QLKFinal.Controllers
         {
             var viewModel = new SuplierFormViewModel
             {
+                Suplier = new Suplier()
             };
             return View("SuplierForm", viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Suplier suplier)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new SuplierFormViewModel
+                {
+                    Suplier = suplier
+                };
+                return View("SuplierForm", viewModel);
+            }
             if (suplier.Id == 0)
                 _context.Supliers.Add(suplier);
             else

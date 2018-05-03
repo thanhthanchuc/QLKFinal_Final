@@ -9,10 +9,13 @@
 
 @using (Html.BeginForm("Save", "Unit"))
 {
+    @Html.ValidationSummary(true, "Vui lòng thêm tất cả các trường còn thiếu!")
     <div class="form-group">
-        @Html.LabelFor(u=>u.Unit.DisplayName)
-        @Html.TextBoxFor(u => u.Unit.DisplayName, new {@class="form-control"})
+        @Html.LabelFor(u => u.Unit.DisplayName)
+        @Html.TextBoxFor(u => u.Unit.DisplayName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Unit.DisplayName)
     </div>
-    @Html.HiddenFor(u=>u.Unit.Id)
+    @Html.HiddenFor(u => u.Unit.Id)
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Lưu</button>
 }

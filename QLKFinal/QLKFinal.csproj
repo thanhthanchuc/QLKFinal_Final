@@ -53,12 +53,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -189,7 +198,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\ObjectssController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ObjectssController.cs" />
@@ -211,11 +222,22 @@
     <Compile Include="Migrations\201805021300111_AddCustomers.Designer.cs">
       <DependentUpon>201805021300111_AddCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805031119558_ReqToObject.cs" />
+    <Compile Include="Migrations\201805031119558_ReqToObject.Designer.cs">
+      <DependentUpon>201805031119558_ReqToObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805031136504_AddMoreRequiredForAnyTable.cs" />
+    <Compile Include="Migrations\201805031136504_AddMoreRequiredForAnyTable.Designer.cs">
+      <DependentUpon>201805031136504_AddMoreRequiredForAnyTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MoreModels\CountAttribult.cs" />
+    <Compile Include="Models\MoreModels\ErrorDateAdded.cs" />
+    <Compile Include="Models\MoreModels\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Objectss.cs" />
     <Compile Include="Models\Suplier.cs" />
     <Compile Include="Models\Unit.cs" />
@@ -320,6 +342,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805021300111_AddCustomers.resx">
       <DependentUpon>201805021300111_AddCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031119558_ReqToObject.resx">
+      <DependentUpon>201805031119558_ReqToObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031136504_AddMoreRequiredForAnyTable.resx">
+      <DependentUpon>201805031136504_AddMoreRequiredForAnyTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,21 +10,30 @@ namespace QLKFinal.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
+        [StringLength(255)]
         [Display(Name = "Tên vật tư")]
         public string DisplayName { get; set; }
 
+        [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
         [Display(Name = "Số lượng")]
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
-        [Display(Name = "Ngày thêm")] public DateTime? DateAdded { get; set; }
+        [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
+        [Display(Name = "Ngày thêm")]
+        public DateTime? DateAdded { get; set; }
 
         public Suplier Suplier { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng chọn nhà cung cấp!")]
         [Display(Name = "Nhà cung cấp")]
         public int SuplierId { get; set; }
 
+        [Required]
+        [Range(1,Int32.MaxValue)]
         public Unit Unit { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng chọn đơn vị!")]
         [Display(Name = "Đơn vị")]
         public int UnitId { get; set; }
 
