@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using QLKFinal.DTOS;
 using QLKFinal.Models;
 
 namespace QLKFinal.Controllers.Api
@@ -17,38 +19,41 @@ namespace QLKFinal.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        public IEnumerable<Suplier> GetsSupliers()
+        public IEnumerable<SuplierDto> GetsSupliers()
         {
-            return _context.Supliers.ToList();
+            return _context.Supliers.ToList().Select(Mapper.Map<Suplier, SuplierDto>);
 
         }
 
         // GET/api/suplier/1
-        public Suplier GetSuplier(int id)
+        public SuplierDto GetSuplier(int id)
         {
             var suplier = _context.Supliers.SingleOrDefault(s => s.Id == id);
 
             if(suplier==null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return suplier;
+            return Mapper.Map<Suplier, SuplierDto>(suplier);
         }
 
         //POST/api/supliers
         [HttpPost]
-        public Suplier CreateSuplier(Suplier suplier)
+        public SuplierDto CreateSuplier(SuplierDto suplierDto)
         {
             if(!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+
+            var suplier = Mapper.Map<SuplierDto, Suplier>(suplierDto);
             _context.Supliers.Add(suplier);
             _context.SaveChanges();
 
-            return suplier;
+            suplierDto.Id = suplier.Id;
+            return suplierDto;
         }
 
         //PUT/api/supliers/1
-        public void UpdateSuplier(int id, Suplier suplier)
+        public void UpdateSuplier(int id, SuplierDto suplierDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -58,13 +63,8 @@ namespace QLKFinal.Controllers.Api
             if(suplierInDb==null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            suplierInDb.DisplayName = suplier.DisplayName;
-            suplierInDb.Addresss = suplier.Addresss;
-            suplierInDb.ContractDate = suplier.ContractDate;
-            suplierInDb.Email = suplier.Email;
-            suplierInDb.MoreInfo = suplier.MoreInfo;
-            suplierInDb.PhoneNumber = suplier.PhoneNumber;
-
+            Mapper.Map(suplierDto, suplierInDb);
+            
             _context.SaveChanges();
         }
 

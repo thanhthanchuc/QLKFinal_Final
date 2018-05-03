@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using QLKFinal.DTOS;
 using QLKFinal.Models;
 
 namespace QLKFinal.Controllers.Api
@@ -20,38 +22,41 @@ namespace QLKFinal.Controllers.Api
 
 
         // GET /api/objectsses
-        public IEnumerable<Objectss> GetObjectsses()
+        public IEnumerable<ObjectssDto> GetObjectsses()
         {
-            return _context.Objectsses.ToList();
+            return _context.Objectsses.ToList().Select(Mapper.Map<Objectss, ObjectssDto>);
         }
 
         // GET / api/objectsses/1
-        public Objectss GetObjectss(int id)
+        public ObjectssDto GetObjectss(int id)
         {
             var objectss = _context.Objectsses.SingleOrDefault(o => o.Id == id);
 
             if(objectss==null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return objectss;
+            return Mapper.Map<Objectss, ObjectssDto>(objectss);
         }
 
         // POST /api/objectsses
         [HttpPost]
-        public Objectss CreateObjectss(Objectss objectss)
+        public ObjectssDto CreateObjectss(ObjectssDto objectssDto)
         {
             if(!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var objectss = Mapper.Map<ObjectssDto, Objectss>(objectssDto);
             _context.Objectsses.Add(objectss);
             _context.SaveChanges();
 
-            return objectss;
+            objectssDto.Id = objectss.Id;
+
+            return objectssDto;
         }
 
         //PUT/api/objectsses/1
         [HttpPut]
-        public void UpdateObjectss(int id, Objectss objectss)
+        public void UpdateObjectss(int id, ObjectssDto objectssDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -61,11 +66,9 @@ namespace QLKFinal.Controllers.Api
             if(objectInDb==null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            objectInDb.DisplayName = objectss.DisplayName;
-            objectInDb.Count = objectss.Count;
-            objectInDb.DateAdded = objectss.DateAdded;
-            objectInDb.SuplierId = objectss.SuplierId;
-            objectInDb.UnitId = objectss.UnitId;
+            Mapper.Map<ObjectssDto, Objectss>(objectssDto, objectInDb);
+            
+
 
             _context.SaveChanges();
         }
