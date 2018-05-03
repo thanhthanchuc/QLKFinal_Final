@@ -1,0 +1,28 @@
+﻿@model IEnumerable<QLKFinal.Models.Unit>
+
+@{
+    ViewBag.Title = "Unit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đơn vị</h2>
+<p>
+    @Html.ActionLink("Thêm mới", "New", "Unit", new {@class="btn btn-primary"})
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Số thứ tự</th>
+        <th>Tên hiển thị</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var unit in Model)
+    {
+        <tr>
+            <td>@unit.Id</td>
+            <td>@Html.ActionLink(unit.DisplayName, "Edit", "Unit", new {id = unit.Id}, null)</td>
+        </tr>
+    }
+    </tbody>
+</table>

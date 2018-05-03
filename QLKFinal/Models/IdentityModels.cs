@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Security.AccessControl;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -23,6 +24,7 @@ namespace QLKFinal.Models
         public DbSet<Objectss> Objectsses { get; set; }
         public DbSet<Suplier> Supliers { get; set; }
         public DbSet<Unit> Units { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

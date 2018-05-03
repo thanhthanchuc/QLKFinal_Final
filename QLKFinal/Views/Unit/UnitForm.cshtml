@@ -1,0 +1,18 @@
+﻿@model QLKFinal.ViewModel.OrtherViewModel.UnitFormViewModel
+
+@{
+    ViewBag.Title = "Tạo mới";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tạo mới đơn vị</h2>
+
+@using (Html.BeginForm("Save", "Unit"))
+{
+    <div class="form-group">
+        @Html.LabelFor(u=>u.Unit.DisplayName)
+        @Html.TextBoxFor(u => u.Unit.DisplayName, new {@class="form-control"})
+    </div>
+    @Html.HiddenFor(u=>u.Unit.Id)
+    <button type="submit" class="btn btn-primary">Lưu</button>
+}

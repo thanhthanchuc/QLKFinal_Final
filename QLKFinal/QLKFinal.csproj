@@ -193,7 +193,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ObjectssController.cs" />
+    <Compile Include="Controllers\OrtherControllers\CustomerController.cs" />
     <Compile Include="Controllers\SuplierController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,8 +207,13 @@
     <Compile Include="Migrations\201805020649136_EntityModels1.Designer.cs">
       <DependentUpon>201805020649136_EntityModels1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805021300111_AddCustomers.cs" />
+    <Compile Include="Migrations\201805021300111_AddCustomers.Designer.cs">
+      <DependentUpon>201805021300111_AddCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Objectss.cs" />
@@ -215,6 +222,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\ObjectFormViewModel.cs" />
+    <Compile Include="ViewModel\OrtherViewModel\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModel\OrtherViewModel\UnitFormViewModel.cs" />
     <Compile Include="ViewModel\SuplierFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +288,9 @@
     <Content Include="Views\Suplier\Index.cshtml" />
     <Content Include="Views\Suplier\SuplierForm.cshtml" />
     <Content Include="Views\Suplier\Details.cshtml" />
+    <Content Include="Views\Unit\Index.cshtml" />
+    <Content Include="Views\Unit\UnitForm.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805020649136_EntityModels1.resx">
       <DependentUpon>201805020649136_EntityModels1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805021300111_AddCustomers.resx">
+      <DependentUpon>201805021300111_AddCustomers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
