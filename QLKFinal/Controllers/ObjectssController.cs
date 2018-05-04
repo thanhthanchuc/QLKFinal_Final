@@ -69,11 +69,11 @@ namespace QLKFinal.Controllers
 
         public ActionResult Index()
         {
-            var item = _context.Objectsses
-                .Include(u=>u.Unit)
-                .Include(s=>s.Suplier)
-                .ToList();
-            return View(item);
+            //var item = _context.Objectsses
+            //    .Include(u=>u.Unit)
+            //    .Include(s=>s.Suplier)
+            //    .ToList();
+            return View(/*item*/);
         }
 
         public ActionResult Details(int id)

@@ -40,7 +40,11 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
+
+        $(document).ready(function () {
+
+            var table = $("#supliers").DataTable();
+
             $("#supliers").on("click", ".js-delete",
                 function () {
                     var button = $(this);
@@ -51,7 +55,7 @@
                                     url: "/api/suplier/" + button.attr("data-suplier-id"),
                                     method: "DELETE",
                                     success: function() {
-                                        button.parents("tr").remove();
+                                        table.row(button.parents("tr")).remove().draw();
                                     }
 
                                 });

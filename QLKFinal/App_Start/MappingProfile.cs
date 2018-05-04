@@ -17,6 +17,7 @@ namespace QLKFinal.App_Start
             Mapper.CreateMap<SuplierDto, Suplier>();
             Mapper.CreateMap<Objectss, ObjectssDto>();
             Mapper.CreateMap<ObjectssDto, Objectss>();
+            Mapper.CreateMap<Unit, UnitDto>();
 
             //Dto to Domain
             Mapper.CreateMap<ObjectssDto, Objectss>().ForMember(o => o.Id, opt => opt.Ignore());

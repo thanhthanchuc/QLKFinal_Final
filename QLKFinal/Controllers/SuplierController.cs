@@ -80,6 +80,22 @@ namespace QLKFinal.Controllers
             return View(suplier);
         }
 
+        //public ActionResult Ofsuplier()
+        //{
+        //    var item = from m in _context.Objectsses
+        //        join s in _context.Supliers on m.SuplierId equals s.Id
+        //        where m.SuplierId == s.Id
+        //        select new Objectss()
+        //        {
+        //            DisplayName = m.DisplayName,
+        //            Count = m.Count,
+        //            DateAdded = m.DateAdded,
+        //            Id = m.Id,
+        //            UnitId = m.UnitId
+        //        };
+        //    return View(item.ToList());
+        //}
+
         public ActionResult Edit(int id)
         {
             var suplier = _context.Supliers

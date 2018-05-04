@@ -13,8 +13,12 @@ namespace QLKFinal
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/respond.js",
-                        "~/Scripts/datatables/jquery.datatables.js",
-                        "~/Scripts/datatables/datatables.bootstrap.js"));
+                        "~/Scripts/DataTables/jquery.datatables.js",
+                        "~/Scripts/DataTables/datatables.bootstrap.js",
+                        "~/Scripts/moment-with-locales.min.js",
+                        "~/Scripts/moment.min.js",
+                        "~/Scripts/moment.js",
+                        "~/Scripts/moment-with-locales.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

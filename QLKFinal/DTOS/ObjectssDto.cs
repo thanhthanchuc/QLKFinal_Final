@@ -23,8 +23,11 @@ namespace QLKFinal.DTOS
 
         public SuplierDto Suplier { get; set; }
 
+        public int SuplierId { get; set; }
 
-        public Unit Unit { get; set; }
+        public UnitDto Unit { get; set; }
+
+        public int UnitId { get; set; }
 
     }
 }
