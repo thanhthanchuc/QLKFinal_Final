@@ -23,7 +23,6 @@ namespace QLKFinal.Models
         public string Email { get; set; }
 
         [Display(Name = "Số điện thoại")]
-        [Phone]
         public int PhoneNumber { get; set; }
         
         [Display(Name = "Thông tin khác")]
@@ -31,6 +30,8 @@ namespace QLKFinal.Models
 
         [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
         [Display(Name = "Ngày gia nhập")]
+        [DisplayFormat(DataFormatString = "{0:d/mm/yyyy}", 
+            ApplyFormatInEditMode = true)]
         public DateTime? ContractDate { get; set; }
     }
 }

@@ -214,6 +214,7 @@
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="DTOS\ObjectssDto.cs" />
     <Compile Include="DTOS\SuplierDto.cs" />
+    <Compile Include="DTOS\UnitDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +237,10 @@
     <Compile Include="Migrations\201805031136504_AddMoreRequiredForAnyTable.cs" />
     <Compile Include="Migrations\201805031136504_AddMoreRequiredForAnyTable.Designer.cs">
       <DependentUpon>201805031136504_AddMoreRequiredForAnyTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805031651036_ReqForAllTable.cs" />
+    <Compile Include="Migrations\201805031651036_ReqForAllTable.Designer.cs">
+      <DependentUpon>201805031651036_ReqForAllTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -261,6 +266,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -355,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805031136504_AddMoreRequiredForAnyTable.resx">
       <DependentUpon>201805031136504_AddMoreRequiredForAnyTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031651036_ReqForAllTable.resx">
+      <DependentUpon>201805031651036_ReqForAllTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

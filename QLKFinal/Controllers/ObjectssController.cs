@@ -38,7 +38,7 @@ namespace QLKFinal.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]//CSRF: Cross-sire Request Forgery
         public ActionResult Save(Objectss objectss)
         {
             if (!ModelState.IsValid)
@@ -69,13 +69,17 @@ namespace QLKFinal.Controllers
 
         public ActionResult Index()
         {
-            var item = _context.Objectsses.Include(s => s.Suplier).Include(u => u.Unit).ToList();
+            var item = _context.Objectsses
+                .Include(u=>u.Unit)
+                .Include(s=>s.Suplier)
+                .ToList();
             return View(item);
         }
 
         public ActionResult Details(int id)
         {
-            var item = _context.Objectsses.Include(u => u.Suplier).Include(u => u.Unit)
+            var item = _context.Objectsses
+                .Include(u => u.Suplier).Include(u => u.Unit)
                 .SingleOrDefault(o => o.Id == id);
 
             if (item == null)

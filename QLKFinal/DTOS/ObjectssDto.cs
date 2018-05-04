@@ -21,10 +21,10 @@ namespace QLKFinal.DTOS
         [Required]
         public DateTime? DateAdded { get; set; }
 
-        public int SuplierId { get; set; }
+        public SuplierDto Suplier { get; set; }
 
 
-        public int UnitId { get; set; }
+        public Unit Unit { get; set; }
 
     }
 }

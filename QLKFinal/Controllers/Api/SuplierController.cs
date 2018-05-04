@@ -19,16 +19,21 @@ namespace QLKFinal.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        public IEnumerable<SuplierDto> GetsSupliers()
+        public IHttpActionResult GetsSupliers()
         {
-            return _context.Supliers.ToList().Select(Mapper.Map<Suplier, SuplierDto>);
+            var suplierDtos = _context.Supliers
+                .ToList()
+                .Select(Mapper.Map<Suplier, SuplierDto>);
+
+            return Ok(suplierDtos);
 
         }
 
         // GET/api/suplier/1
         public IHttpActionResult GetSuplier(int id)
         {
-            var suplier = _context.Supliers.SingleOrDefault(s => s.Id == id);
+            var suplier = _context.Supliers
+                .SingleOrDefault(s => s.Id == id);
 
             if (suplier == null)
                 return NotFound();
@@ -53,32 +58,37 @@ namespace QLKFinal.Controllers.Api
         }
 
         //PUT/api/supliers/1
-        public void UpdateSuplier(int id, SuplierDto suplierDto)
+        public IHttpActionResult UpdateSuplier(int id, SuplierDto suplierDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
-            var suplierInDb = _context.Supliers.SingleOrDefault(s => s.Id == id);
+            var suplierInDb = _context.Supliers
+                .SingleOrDefault(s => s.Id == id);
 
-            if(suplierInDb==null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (suplierInDb == null)
+                return NotFound();
 
             Mapper.Map(suplierDto, suplierInDb);
             
             _context.SaveChanges();
+            return Ok();
         }
 
         //DELETE /api/supliers/1
         [HttpDelete]
-        public void DeleteSuplier(int id)
+        public IHttpActionResult DeleteSuplier(int id)
         {
-            var suplierInDb = _context.Supliers.SingleOrDefault(s => s.Id == id);
+            var suplierInDb = _context.Supliers
+                .SingleOrDefault(s => s.Id == id);
 
             if (suplierInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             _context.Supliers.Remove(suplierInDb);
             _context.SaveChanges();
+
+            return Ok();
         }
     }
 }

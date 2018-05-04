@@ -1,7 +1,7 @@
 ﻿@model QLKFinal.ViewModel.ObjectFormViewModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Thêm mới Item";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,7 +18,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Objectss.DateAdded)
         @Html.TextBoxFor(m => m.Objectss.DateAdded, "{0:d/MM/yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Objectss.DateAdded)
+        @Html.ValidationMessageFor(m=>m.Objectss.DateAdded)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Objectss.Count)
@@ -38,4 +38,9 @@
     @Html.HiddenFor(m => m.Objectss.Id)
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Lưu</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }

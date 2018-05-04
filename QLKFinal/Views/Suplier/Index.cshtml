@@ -11,15 +11,16 @@
     @Html.ActionLink("Thêm mới", "New", "Suplier", new {@class="btn btn-primary"})
 </p>
 
-<table class="table table-hover table-bordered">
+<table id="supliers" class="table table-hover table-bordered">
     <thead>
-        <tr>
-            <th>Số thứ tự</th>
-            <th>Tên nhà cung cấp</th>
-            <th>Email</th>
-            <th>Ngày gia nhập</th>
-            <th>Chi tiết</th>
-        </tr>
+    <tr>
+        <th>Số thứ tự</th>
+        <th>Tên nhà cung cấp</th>
+        <th>Email</th>
+        <th>Ngày gia nhập</th>
+        <th>Chi tiết</th>
+        <th>Xóa</th>
+    </tr>
     </thead>
     <tbody>
     @foreach (var suplier in Model)
@@ -30,7 +31,33 @@
             <td>@suplier.Email</td>
             <td>@suplier.ContractDate.Value.ToShortDateString()</td>
             <td>@Html.ActionLink("Chi tiết", "Details", "Suplier", new {id = suplier.Id}, null)</td>
+            <td><button data-suplier-id="@suplier.Id" class="btn-link js-delete">Xóa</button></td>
         </tr>
     }
     </tbody>
 </table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#supliers").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Bạn chắc chắn muốn xóa nhà cung cấp này?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/suplier/" + button.attr("data-suplier-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

@@ -29,12 +29,11 @@ namespace QLKFinal.Models
         [Display(Name = "Nhà cung cấp")]
         public int SuplierId { get; set; }
 
-        [Required]
-        [Range(1,Int32.MaxValue)]
         public Unit Unit { get; set; }
 
         [Required(ErrorMessage = "Vui lòng chọn đơn vị!")]
         [Display(Name = "Đơn vị")]
+        [Range(1,Int32.MaxValue)]
         public int UnitId { get; set; }
 
     }

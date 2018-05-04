@@ -10,21 +10,21 @@ namespace QLKFinal.DTOS
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
+        [Required]
         public string DisplayName { get; set; }
 
 
         public string Addresss { get; set; }
 
-        [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
+        [Required]
         public string Email { get; set; }
 
-        [Phone]
+        
         public int PhoneNumber { get; set; }
 
         public string MoreInfo { get; set; }
 
-        [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
+        [Required]
         public DateTime? ContractDate { get; set; }
     }
 }

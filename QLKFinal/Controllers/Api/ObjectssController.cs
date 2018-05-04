@@ -7,6 +7,7 @@ using System.Web.Http;
 using AutoMapper;
 using QLKFinal.DTOS;
 using QLKFinal.Models;
+using System.Data.Entity;
 
 namespace QLKFinal.Controllers.Api
 {
@@ -21,16 +22,23 @@ namespace QLKFinal.Controllers.Api
 
 
 
-        // GET /api/objectsses
-        public IEnumerable<ObjectssDto> GetObjectsses()
+        // GET /api/objectsses : API - Application Program Interface
+        public IHttpActionResult GetObjectsses()
         {
-            return _context.Objectsses.ToList().Select(Mapper.Map<Objectss, ObjectssDto>);
+            var objectDtos = _context.Objectsses
+                .Include(u => u.Unit)
+                .Include(s => s.Suplier)
+                .ToList()
+                .Select(Mapper.Map<Objectss, ObjectssDto>);
+
+            return Ok(objectDtos);
         }
 
         // GET / api/objectsses/1
         public IHttpActionResult GetObjectss(int id)
         {
-            var objectss = _context.Objectsses.SingleOrDefault(o => o.Id == id);
+            var objectss = _context.Objectsses
+                .SingleOrDefault(o => o.Id == id);
 
             if (objectss == null)
                 return NotFound();
@@ -56,34 +64,36 @@ namespace QLKFinal.Controllers.Api
 
         //PUT/api/objectsses/1
         [HttpPut]
-        public void UpdateObjectss(int id, ObjectssDto objectssDto)
+        public IHttpActionResult UpdateObjectss(int id, ObjectssDto objectssDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
-            var objectInDb = _context.Objectsses.SingleOrDefault(o => o.Id == id);
+            var objectInDb = _context.Objectsses
+                .SingleOrDefault(o => o.Id == id);
 
-            if(objectInDb==null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (objectInDb == null)
+                return NotFound();
 
-            Mapper.Map<ObjectssDto, Objectss>(objectssDto, objectInDb);
+            Mapper.Map(objectssDto, objectInDb);
             
-
-
             _context.SaveChanges();
+            return Ok();
         }
 
         //DELETE /api/objectss/1
         [HttpDelete]
-        public void DeleteObjectss(int id)
+        public IHttpActionResult DeleteObjectss(int id)
         {
-            var objectInDb = _context.Objectsses.SingleOrDefault(o => o.Id == id);
+            var objectInDb = _context.Objectsses
+                .SingleOrDefault(o => o.Id == id);
 
             if (objectInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             _context.Objectsses.Remove(objectInDb);
             _context.SaveChanges();
+            return Ok();
         }
     }
 }

@@ -47,7 +47,9 @@ namespace QLKFinal.Controllers
                 _context.Supliers.Add(suplier);
             else
             {
-                var suplierInDb = _context.Supliers.Single(s => s.Id == suplier.Id);
+                var suplierInDb = _context.Supliers
+                    .Single(s => s.Id == suplier.Id);
+
                 suplierInDb.DisplayName = suplier.DisplayName;
                 suplierInDb.Addresss = suplier.Addresss;
                 suplierInDb.ContractDate = suplier.ContractDate;
@@ -80,7 +82,8 @@ namespace QLKFinal.Controllers
 
         public ActionResult Edit(int id)
         {
-            var suplier = _context.Supliers.SingleOrDefault(s => s.Id == id);
+            var suplier = _context.Supliers
+                .SingleOrDefault(s => s.Id == id);
 
             if (suplier == null)
                 return HttpNotFound();

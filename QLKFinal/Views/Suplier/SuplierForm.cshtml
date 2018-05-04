@@ -11,11 +11,11 @@
     <div class="form-group">
         @Html.LabelFor(s => s.Suplier.DisplayName)
         @Html.TextBoxFor(s => s.Suplier.DisplayName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(s=>s.Suplier.DisplayName)
+        @Html.ValidationMessageFor(s => s.Suplier.DisplayName)
     </div>
     <div class="form-group">
         @Html.LabelFor(s => s.Suplier.ContractDate)
-        @Html.TextBoxFor(s => s.Suplier.ContractDate, "{0:d/MM/yyyy}", new { @class = "form-control" })
+        @Html.TextBoxFor(s => s.Suplier.ContractDate, @"{0:d/mm/yyyy}",new { @class = "form-control" })
         @Html.ValidationMessageFor(s => s.Suplier.ContractDate)
     </div>
     <div class="form-group">
@@ -34,8 +34,14 @@
     <div class="form-group">
         @Html.LabelFor(s => s.Suplier.PhoneNumber)
         @Html.TextBoxFor(s => s.Suplier.PhoneNumber, new { @class = "form-control" })
+        
     </div>
-    @Html.HiddenFor(s=>s.Suplier.Id)
+    @Html.HiddenFor(s => s.Suplier.Id)
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Tạo mới</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
