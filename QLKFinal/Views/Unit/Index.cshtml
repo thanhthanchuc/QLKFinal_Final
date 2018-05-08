@@ -9,11 +9,12 @@
 <p>
     @Html.ActionLink("Thêm mới", "New", "Unit", new {@class="btn btn-primary"})
 </p>
-<table class="table table-bordered table-hover">
+<table id="unit" class="table table-bordered table-hover">
     <thead>
     <tr>
         <th>Số thứ tự</th>
         <th>Tên hiển thị</th>
+        <th>Xóa</th>
     </tr>
     </thead>
     <tbody>
@@ -22,7 +23,35 @@
         <tr>
             <td>@unit.Id</td>
             <td>@Html.ActionLink(unit.DisplayName, "Edit", "Unit", new {id = unit.Id}, null)</td>
+            <td><button data-unit-id="@unit.Id" class="btn-link js-delete">Xóa</button></td>
         </tr>
     }
     </tbody>
 </table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            var table = $("#unit").DataTables();
+
+            $("#unit").on("click",
+                ".js-delete",
+                function() {
+                    var button = $(this);
+                    bootbox.confirm("Bạn chắc chắn muốn xóa?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    ur: "/api/unit/" + button.attr("data-unit-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        table.row(button.parents("tr")).remove().draw();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

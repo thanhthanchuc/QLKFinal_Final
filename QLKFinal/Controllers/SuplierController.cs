@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using QLKFinal.Models;
 using QLKFinal.ViewModel;
+using QLKFinal.ViewModel.OrtherViewModel;
 
 namespace QLKFinal.Controllers
 {
@@ -83,17 +84,22 @@ namespace QLKFinal.Controllers
         //public ActionResult Ofsuplier()
         //{
         //    var item = from m in _context.Objectsses
-        //        join s in _context.Supliers on m.SuplierId equals s.Id
-        //        where m.SuplierId == s.Id
-        //        select new Objectss()
-        //        {
-        //            DisplayName = m.DisplayName,
-        //            Count = m.Count,
-        //            DateAdded = m.DateAdded,
-        //            Id = m.Id,
-        //            UnitId = m.UnitId
-        //        };
-        //    return View(item.ToList());
+        //               join s in _context.Supliers on m.SuplierId equals s.Id
+        //               where m.SuplierId == s.Id
+        //               select new Objectss()
+        //               {
+        //                   DisplayName = m.DisplayName,
+        //                   Count = m.Count,
+        //                   DateAdded = m.DateAdded,
+        //                   Id = m.Id,
+        //                   UnitId = m.UnitId
+        //               };
+        //    var viewLinQ = new LinQSuplierViewModel
+        //    {
+        //        Objectsses = item
+        //    };
+        //    return View("Details", viewLinQ);
+            
         //}
 
         public ActionResult Edit(int id)

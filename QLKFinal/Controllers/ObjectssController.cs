@@ -69,11 +69,20 @@ namespace QLKFinal.Controllers
 
         public ActionResult Index()
         {
-            //var item = _context.Objectsses
-            //    .Include(u=>u.Unit)
-            //    .Include(s=>s.Suplier)
-            //    .ToList();
-            return View(/*item*/);
+            var item = _context.Objectsses
+                .Include(u => u.Unit)
+                .Include(s => s.Suplier)
+                .ToList();
+            return View(item);
+        }
+
+        public ActionResult OfSuplier()
+        {
+            var item = from s in _context.Objectsses
+                join m in _context.Supliers on s.SuplierId equals m.Id
+                where s.SuplierId == m.Id
+                select s;
+            return View(item);
         }
 
         public ActionResult Details(int id)

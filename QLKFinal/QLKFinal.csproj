@@ -257,6 +257,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\ObjectFormViewModel.cs" />
     <Compile Include="ViewModel\OrtherViewModel\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModel\OrtherViewModel\LinQSuplierViewModel.cs" />
     <Compile Include="ViewModel\OrtherViewModel\UnitFormViewModel.cs" />
     <Compile Include="ViewModel\SuplierFormViewModel.cs" />
   </ItemGroup>
@@ -504,7 +505,7 @@
     <Content Include="Views\Unit\Index.cshtml" />
     <Content Include="Views\Unit\UnitForm.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Suplier\Ofsuplier.cshtml" />
+    <Content Include="Views\Objectss\OfSuplier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

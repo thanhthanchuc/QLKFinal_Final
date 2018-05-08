@@ -17,59 +17,33 @@
         <th>Số lượng</th>
         <th>Đơn vị</th>
         <th>Nhà cung cấp</th>
-        <th>Xóa</th>
+        <th>Xem thêm</th>
     </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+        @foreach (var objects in Model)
+        {
+            <tr>
+                <td>@objects.Id</td>
+                <td>@objects.DisplayName</td>
+                <td>@objects.Count</td>
+                <td>@objects.Unit.DisplayName</td>
+                <td>@objects.Suplier.DisplayName</td>
+                <td>@Html.ActionLink("Chi tiết", "Details", "Objectss", new {id = objects.Id}, null)   |<button data-objectss-id="@objects.Id" class="btn-link js-delete">Xóa</button></td>
+            </tr>
+        }
+    </tbody>
 </table>
-
+<!--Jquery Code-->
 @section scripts
 {
     <script>
-       $(document).ready(function () {
-           var table = $("#objectss").DataTable({
-                ajax: {
-                    url: "/api/objectss",
-                    dataSrc: ""
-                },
-                columns: [
-                    {
-                        data: "id",
-                        render: function(data, type, objectss) {
-                            return "<p>" + objectss.id + "</p>";
-                        }
-                    },
-                    {
-                        data: "displayname",
-                        render: function(data, type, objectss) {
-                            return "<a href='/objectss/edit/" + objectss.id + "'>" + objectss.displayName + "</a>";
-                        }
-                    },
-                    {
-                        data: "count",
-                        render: function(data, type, objectss) {
-                            return "<p>" + objectss.count + "</p>";
-                        }
-                    },
-                    {
-                        data: "unit.displayName"
-                    },
-                    {
-                        data: "suplier.displayName"
-                    },
-                    {
-                        data: "id",
-                        render: function(data) {
-                            return "<button class='btn-link js-delete' data-objectss-id =" + data + ">Xóa</button>";
-                        }
-                    }
-                    ]
-            });
+        $(document).ready(function() {
+            var table = $("#objectss").DataTable();
 
-
-
-            $("#objectss").on("click", ".js-delete",
-                function () {
+            $("#objectss").on("click",
+                ".js-delete",
+                function() {
                     var button = $(this);
 
                     bootbox.confirm("Bạn chắc chắn muốn xóa vật phẩm này?",

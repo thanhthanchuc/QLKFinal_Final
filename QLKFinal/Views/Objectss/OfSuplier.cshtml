@@ -1,0 +1,61 @@
+﻿@model IEnumerable<QLKFinal.Models.Objectss>
+@{
+    ViewBag.Title = "OfSuplier";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<table id="objectss" class="table table-hover table bordered">
+    <thead>
+    <tr>
+        <th>Mã vật tư</th>
+        <th>Tên</th>
+        <th>Số lượng</th>
+        <th>Đơn vị</th>
+        <th>Ngày thêm</th>
+        <th>Xem thêm</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var objects in Model)
+    {
+        <tr>
+            <td>@objects.Id</td>
+            <td>@objects.DisplayName</td>
+            <td>@objects.Count</td>
+            <td>@objects.UnitId</td>
+            <td>@objects.DateAdded</td>
+            <td>@Html.ActionLink("Thông tin thêm", "Details", "Objectss") | <button data-object-id="@objects.Id" class="btn-link js-delete">Xóa</button></td>
+        </tr>
+    }
+    </tbody>
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            var table = $("#objectss").DataTables();
+
+            $('#objectss').on("click",
+                ".js-delete",
+                function() {
+                    var botton = $(this);
+                    bootbox.confirm("Bạn chắc chắn muốn xóa nhà cung cấp này?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/objectss/" + button.attr("data-object-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        table.row(button.parents("tr")).remote().draw();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}
+
