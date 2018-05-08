@@ -206,10 +206,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\ObjectssController.cs" />
     <Compile Include="Controllers\Api\SuplierController.cs" />
+    <Compile Include="Controllers\Api\UnitController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InputController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ObjectssController.cs" />
     <Compile Include="Controllers\OrtherControllers\CustomerController.cs" />
+    <Compile Include="Controllers\OrtherControllers\InputInfoController.cs" />
     <Compile Include="Controllers\SuplierController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="DTOS\ObjectssDto.cs" />
@@ -242,6 +245,14 @@
     <Compile Include="Migrations\201805031651036_ReqForAllTable.Designer.cs">
       <DependentUpon>201805031651036_ReqForAllTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805080626491_AddInputAndInputInfos.cs" />
+    <Compile Include="Migrations\201805080626491_AddInputAndInputInfos.Designer.cs">
+      <DependentUpon>201805080626491_AddInputAndInputInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805080838540_AddReqToInput.cs" />
+    <Compile Include="Migrations\201805080838540_AddReqToInput.Designer.cs">
+      <DependentUpon>201805080838540_AddReqToInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -249,7 +260,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MoreModels\CountAttribult.cs" />
     <Compile Include="Models\MoreModels\ErrorDateAdded.cs" />
+    <Compile Include="Models\MoreModels\Input.cs" />
+    <Compile Include="Models\MoreModels\InputInfo.cs" />
     <Compile Include="Models\MoreModels\Min18YearsIfAMember.cs" />
+    <Compile Include="Models\MoreModels\Output.cs" />
     <Compile Include="Models\Objectss.cs" />
     <Compile Include="Models\Suplier.cs" />
     <Compile Include="Models\Unit.cs" />
@@ -257,6 +271,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\ObjectFormViewModel.cs" />
     <Compile Include="ViewModel\OrtherViewModel\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModel\OrtherViewModel\InputFormViewModel.cs" />
+    <Compile Include="ViewModel\OrtherViewModel\InputInfoFormViewModel.cs" />
     <Compile Include="ViewModel\OrtherViewModel\LinQSuplierViewModel.cs" />
     <Compile Include="ViewModel\OrtherViewModel\UnitFormViewModel.cs" />
     <Compile Include="ViewModel\SuplierFormViewModel.cs" />
@@ -506,6 +522,10 @@
     <Content Include="Views\Unit\UnitForm.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Objectss\OfSuplier.cshtml" />
+    <Content Include="Views\Input\Index.cshtml" />
+    <Content Include="Views\Input\InputForm.cshtml" />
+    <Content Include="Views\InputInfo\InputInfoForm.cshtml" />
+    <Content Include="Views\InputInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -544,6 +564,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805031651036_ReqForAllTable.resx">
       <DependentUpon>201805031651036_ReqForAllTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080626491_AddInputAndInputInfos.resx">
+      <DependentUpon>201805080626491_AddInputAndInputInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080838540_AddReqToInput.resx">
+      <DependentUpon>201805080838540_AddReqToInput.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

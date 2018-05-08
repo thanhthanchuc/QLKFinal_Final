@@ -21,7 +21,7 @@ namespace QLKFinal.Models
 
         [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
         [Display(Name = "Ngày thêm")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "0:d/mm/yyyy")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "0:d/mm/yyyy")]
         public DateTime? DateAdded { get; set; }
 
         public Suplier Suplier { get; set; }

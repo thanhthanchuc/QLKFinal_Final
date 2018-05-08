@@ -1,0 +1,21 @@
+﻿@model QLKFinal.ViewModel.OrtherViewModel.InputFormViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm mới</h2>
+
+@using (@Html.BeginForm("Save", "Input"))
+{
+    @Html.ValidationSummary(true, "Vui lòng điền thêm tất cả các trường còn thiếu!")
+    <div class="form-group">
+        @Html.LabelFor(u=>u.Input.DateAdded)
+        @Html.TextBoxFor(u=>u.Input.DateAdded, "{0:d/MM/yyyy}",new {@class = "form-control"})
+        @Html.ValidationMessageFor(s=>s.Input.DateAdded)
+    </div>
+    @Html.HiddenFor(u=>u.Input.Id)
+    @Html.AntiForgeryToken() //CSFT : Cross-Site Forgein Token  - Tấn công giả mạp Request.
+    <button type="submit" class="btn btn-primary">Lưu</button>
+}
