@@ -11,6 +11,10 @@ namespace QLKFinal.Models.MoreModels
     {
         public int Id { get; set; }
 
+        [Display(Name = "Tên phiếu nhập")]
+        [Required(ErrorMessage = "Bạn không được bỏ chống trường này")]
+        public string DisplayName { get; set; }
+
         [Display(Name = "Ngày tạo phiếu")]
         [Required(ErrorMessage = "Bạn không được bỏ chống trường này!")]
         public DateTime? DateAdded { get; set; }

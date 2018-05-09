@@ -80,8 +80,45 @@ namespace QLKFinal.Controllers.OrtherControllers
         // GET: InputInfo
         public ActionResult Index()
         {
-            var item = _context.InputInfos.Include(i => i.Input).Include(o => o.Objectss).ToList();
+            var item = _context.InputInfos.Include(i => i.Input).Include(o => o.Objectss).Include(s=>s.Objectss.Suplier).Include(u=>u.Objectss.Unit).ToList();
             return View(item);
+        }
+
+        public ActionResult OfInput(Input input)
+        {
+            var item = from m in _context.InputInfos
+                where m.Id == input.Id
+                select m;
+
+            return View("OfInput", item);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var input = _context.InputInfos.SingleOrDefault(i => i.Id == id);
+
+            if (input == null)
+                return HttpNotFound();
+
+            var viewModel = new InputInfoFormViewModel
+            {
+                InputInfo = input,
+                Objectsses = _context.Objectsses.Include(u => u.Unit).Include(s => s.Suplier).ToList(),
+                Inputs = _context.Inputs.ToList()
+            };
+
+            return View("InputInfoForm", viewModel);
+        }
+
+        public ActionResult Deitals(int id)
+        {
+            var input = _context.InputInfos.Include(u => u.Input).Include(o => o.Objectss)
+                .Include(s => s.Objectss.Suplier).Include(u => u.Objectss.Unit).SingleOrDefault(i => i.Id == id);
+
+            if (input == null)
+                return HttpNotFound();
+
+            return View(input);
         }
     }
 }

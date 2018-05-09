@@ -8,11 +8,13 @@
 <p>
     @Html.ActionLink("Thêm mới", "New", "Input", new {@class="btn btn-primary"})
 </p>
-<table class="table table-hover table-bordered">
+<table id="table" class="table table-hover table-bordered">
     <thead>
     <tr>
         <th>Mã phiếu nhập</th>
+        <th>Tên phiếu nhập</th>
         <th>Ngày nhập</th>
+        <th>Xóa</th>
     </tr>
     </thead>
     <tbody>
@@ -20,9 +22,36 @@
     {
         <tr>
             <td>@input.Id</td>
+            <td>@input.DisplayName</td>
             <td>@input.DateAdded.Value.ToShortDateString()</td>
+            <td>@Html.ActionLink("Chi tiết", "OfInput", "InputInfo", new{@input.Id}, null) |<button data-input-id="@input.Id" class="btn-link js-delete">Xóa</button></td>
         </tr>
     }
     </tbody>
 </table>
+
+@section Scripts
+{
+    <script>
+        var table = $("#table").DataTable();
+
+        $("#table").on("click",
+            ".js-delete",
+            function() {
+                var button = $(this);
+                bootbox.confirm("Bạn chắc chắn muốn xóa?",
+                    function(result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/api/input/" + button.attr("data-input-id"),
+                                method: "DELETE",
+                                success: function() {
+                                    table.row(button.parents("tr")).remove().draw();
+                                }
+                            });
+                        }
+                    });
+            });
+    </script>
+}
 

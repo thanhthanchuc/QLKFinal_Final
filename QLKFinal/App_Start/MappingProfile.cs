@@ -5,6 +5,7 @@ using System.Web;
 using AutoMapper;
 using QLKFinal.DTOS;
 using QLKFinal.Models;
+using QLKFinal.Models.MoreModels;
 
 namespace QLKFinal.App_Start
 {
@@ -18,6 +19,7 @@ namespace QLKFinal.App_Start
             Mapper.CreateMap<Objectss, ObjectssDto>();
             Mapper.CreateMap<ObjectssDto, Objectss>();
             Mapper.CreateMap<Unit, UnitDto>();
+            Mapper.CreateMap<Input, InputDto>();
 
             //Dto to Domain
             Mapper.CreateMap<ObjectssDto, Objectss>().ForMember(o => o.Id, opt => opt.Ignore());

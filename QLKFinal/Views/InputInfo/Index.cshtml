@@ -1,8 +1,36 @@
-﻿@model System.Collections.Generic.List<QLKFinal.Models.MoreModels.InputInfo>
+﻿@model IEnumerable<QLKFinal.Models.MoreModels.InputInfo>
 
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
+<h2>Thông tin các phiếu nhập</h2>
+<p>
+    @Html.ActionLink("Thêm mới", "New", "InputInfo", new {@class="btn btn-primary"})
+</p>
+<table id="inputinfo" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Mã phiếu nhập</th>
+        <th>Tên phiếu nhập</th>
+        <th>Ngày nhập phiếu</th>
+        <th>Tên vật phẩm</th>
+        <th>Nhà cung cấp</th>
+        <th>Thêm</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var input in Model)
+    {
+        <tr>
+            <th>@input.Input.Id</th>
+            <th>@input.Input.DisplayName</th>
+            <th>@input.Input.DateAdded.Value.ToShortDateString()</th>
+            <th>@input.Objectss.DisplayName</th>
+            <th>@input.Objectss.Suplier.DisplayName</th>
+            <th>@Html.ActionLink("Chi tiết", "Details", "InputInfo", new {@class="btn-link"}) | <button data-inputinfo-id="inputinfo" class="btn-link js-delete">Xóa</button></th>
+        </tr>
+    }
+    </tbody>
+</table>

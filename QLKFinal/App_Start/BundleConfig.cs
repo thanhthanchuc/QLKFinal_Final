@@ -12,6 +12,7 @@ namespace QLKFinal
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
+                        "~/Scripts/bootbox.min.js",
                         "~/Scripts/respond.js",
                         "~/Scripts/DataTables/jquery.datatables.js",
                         "~/Scripts/DataTables/datatables.bootstrap.js",

@@ -59,10 +59,26 @@ namespace QLKFinal.Controllers
             {
                 var inputInDb = _context.Inputs.Single(i => i.Id == input.Id);
                 inputInDb.DateAdded = input.DateAdded;
+                inputInDb.DisplayName = input.DisplayName;
             }
 
             _context.SaveChanges();
             return RedirectToAction("Index", "Input");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var input = _context.Inputs.SingleOrDefault(i => i.Id == id);
+
+            if (input == null)
+                return HttpNotFound();
+
+            var viewModel = new InputFormViewModel
+            {
+                Input = input
+            };
+
+            return View("InputForm", viewModel);
         }
 
         

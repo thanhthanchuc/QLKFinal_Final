@@ -1,0 +1,41 @@
+﻿@model System.Linq.IQueryable<QLKFinal.Models.MoreModels.InputInfo>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>title</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Mã phiếu nhập</th>
+            <th>Tên phiếu nhập</th>
+            <th>Ngày nhập phiếu</th>
+            <th>Tên vật phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn vị</th>
+            <th>Giá thành nhập vào</th>
+            <th>Giá thành bán ra</th>
+            <th>Nhà cung cấp</th>
+            <th>Ngày thêm vật phẩm</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var input in Model)
+        {
+            <tr>
+                <th>@input.Input.Id</th>
+                <td>@input.Input.DisplayName</td>
+                <th>@input.Input.DateAdded.Value.ToShortDateString()</th>
+                <th>@input.Objectss.DisplayName</th>
+                <th>@input.Count</th>
+                <th>@input.Objectss.Unit.DisplayName</th>
+                <th>@input.InputPrice</th>
+                <th>@input.OutputPrice</th>
+                <th>@input.Objectss.Suplier.DisplayName</th>
+                <th>@input.Objectss.DateAdded.Value.ToShortDateString()</th>
+            </tr>
+        }
+    </tbody>
+</table>

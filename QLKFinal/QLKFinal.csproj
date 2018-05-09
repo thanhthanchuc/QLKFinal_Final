@@ -204,6 +204,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\InputController.cs" />
     <Compile Include="Controllers\Api\ObjectssController.cs" />
     <Compile Include="Controllers\Api\SuplierController.cs" />
     <Compile Include="Controllers\Api\UnitController.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Controllers\OrtherControllers\InputInfoController.cs" />
     <Compile Include="Controllers\SuplierController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="DTOS\InputDto.cs" />
     <Compile Include="DTOS\ObjectssDto.cs" />
     <Compile Include="DTOS\SuplierDto.cs" />
     <Compile Include="DTOS\UnitDto.cs" />
@@ -252,6 +254,14 @@
     <Compile Include="Migrations\201805080838540_AddReqToInput.cs" />
     <Compile Include="Migrations\201805080838540_AddReqToInput.Designer.cs">
       <DependentUpon>201805080838540_AddReqToInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805090654577_AddNameToInput.cs" />
+    <Compile Include="Migrations\201805090654577_AddNameToInput.Designer.cs">
+      <DependentUpon>201805090654577_AddNameToInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805090701156_SetNameOfInput.cs" />
+    <Compile Include="Migrations\201805090701156_SetNameOfInput.Designer.cs">
+      <DependentUpon>201805090701156_SetNameOfInput.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -527,6 +537,8 @@
     <Content Include="Views\InputInfo\InputInfoForm.cshtml" />
     <Content Include="Views\InputInfo\Index.cshtml" />
     <Content Include="Views\Suplier\OfSuplier.cshtml" />
+    <Content Include="Views\InputInfo\OfInput.cshtml" />
+    <Content Include="Views\InputInfo\Deitals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -571,6 +583,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805080838540_AddReqToInput.resx">
       <DependentUpon>201805080838540_AddReqToInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805090654577_AddNameToInput.resx">
+      <DependentUpon>201805090654577_AddNameToInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805090701156_SetNameOfInput.resx">
+      <DependentUpon>201805090701156_SetNameOfInput.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

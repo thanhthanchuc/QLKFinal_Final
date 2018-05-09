@@ -5,4 +5,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
+<h2>Tạo thông tin phiếu nhập mới</h2>
+
+@using (@Html.BeginForm("Save", "InputInfo"))
+{
+    @Html.ValidationSummary(true, "Vui lòng thêm tất cả các trường còn thiếu!")
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.InputInfo.InputId)
+        @Html.DropDownListFor(m => m.InputInfo.InputId, new SelectList(Model.Inputs, "Id", "DisplayName"), "Tên phiếu nhập", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InputInfo.InputId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.InputInfo.ObjectssId)
+        @Html.DropDownListFor(m => m.InputInfo.ObjectssId, new SelectList(Model.Objectsses, "Id", "DisplayName"), "Tên vật phẩm", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InputInfo.ObjectssId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.InputInfo.Count)
+        @Html.TextBoxFor(m => m.InputInfo.Count, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InputInfo.Count)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.InputInfo.InputPrice)
+        @Html.TextBoxFor(m => m.InputInfo.InputPrice, "Đơn vị vnđ",new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InputInfo.InputPrice)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.InputInfo.OutputPrice)
+        @Html.TextBoxFor(m => m.InputInfo.OutputPrice, "Đơn vị vnđ",new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InputInfo.OutputPrice)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.InputInfo.Status)
+        @Html.TextBoxFor(m => m.InputInfo.Status, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InputInfo.Status)
+    </div>
+
+    @Html.HiddenFor(m => m.InputInfo.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Lưu</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
