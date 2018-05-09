@@ -76,14 +76,13 @@ namespace QLKFinal.Controllers
             return View(item);
         }
 
-        public ActionResult OfSuplier()
-        {
-            var item = from s in _context.Objectsses
-                join m in _context.Supliers on s.SuplierId equals m.Id
-                where s.SuplierId == m.Id
-                select s;
-            return View(item);
-        }
+        //public ActionResult OfSuplier()
+        //{
+        //    var suplier = _context.Supliers.ToList();
+        //    var item = from s in _context.Objectsses.Include(u=>u.Unit).Include(s=>s.Suplier)
+        //        where s.SuplierId == suplier.Id
+        //    return View(item);
+        //}
 
         public ActionResult Details(int id)
         {

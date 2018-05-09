@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using QLKFinal.Models;
 using QLKFinal.ViewModel;
 using QLKFinal.ViewModel.OrtherViewModel;
+using System.Data.Entity;
 
 namespace QLKFinal.Controllers
 {
@@ -81,26 +82,13 @@ namespace QLKFinal.Controllers
             return View(suplier);
         }
 
-        //public ActionResult Ofsuplier()
-        //{
-        //    var item = from m in _context.Objectsses
-        //               join s in _context.Supliers on m.SuplierId equals s.Id
-        //               where m.SuplierId == s.Id
-        //               select new Objectss()
-        //               {
-        //                   DisplayName = m.DisplayName,
-        //                   Count = m.Count,
-        //                   DateAdded = m.DateAdded,
-        //                   Id = m.Id,
-        //                   UnitId = m.UnitId
-        //               };
-        //    var viewLinQ = new LinQSuplierViewModel
-        //    {
-        //        Objectsses = item
-        //    };
-        //    return View("Details", viewLinQ);
-            
-        //}
+        public ActionResult OfSuplieResult(Suplier suplier)
+        {
+            var item = from b in _context.Objectsses.Include(u => u.Unit).Include(s => s.Suplier)
+                where b.SuplierId == suplier.Id
+                select b;
+            return View("OfSuplier", item);
+        }
 
         public ActionResult Edit(int id)
         {

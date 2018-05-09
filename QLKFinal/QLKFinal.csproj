@@ -526,6 +526,7 @@
     <Content Include="Views\Input\InputForm.cshtml" />
     <Content Include="Views\InputInfo\InputInfoForm.cshtml" />
     <Content Include="Views\InputInfo\Index.cshtml" />
+    <Content Include="Views\Suplier\OfSuplier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
