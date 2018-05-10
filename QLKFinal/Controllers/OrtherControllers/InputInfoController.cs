@@ -80,14 +80,20 @@ namespace QLKFinal.Controllers.OrtherControllers
         // GET: InputInfo
         public ActionResult Index()
         {
-            var item = _context.InputInfos.Include(i => i.Input).Include(o => o.Objectss).Include(s=>s.Objectss.Suplier).Include(u=>u.Objectss.Unit).ToList();
+            var item = _context.InputInfos
+                .Include(i => i.Input)
+                .Include(o => o.Objectss)
+                .Include(s=>s.Objectss.Suplier)
+                .Include(u=>u.Objectss.Unit).ToList();
             return View(item);
         }
 
         public ActionResult OfInput(Input input)
         {
             var item = from m in _context.InputInfos
-                where m.Id == input.Id
+                    .Include(i=>i.Input).Include(o=>o.Objectss)
+                .Include(s=>s.Objectss.Suplier).Include(u=>u.Objectss.Unit)
+                where m.InputId == input.Id
                 select m;
 
             return View("OfInput", item);

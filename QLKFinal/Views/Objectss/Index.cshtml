@@ -1,7 +1,7 @@
 ﻿@using QLKFinal.Models
 @model IEnumerable<QLKFinal.Models.Objectss>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Vật tư";
 }
 
 <h2>Vật tư</h2>
@@ -21,19 +21,20 @@
     </tr>
     </thead>
     <tbody>
-        @foreach (var objects in Model)
-        {
-            <tr>
-                <td>@objects.Id</td>
-                <td>@objects.DisplayName</td>
-                <td>@objects.Count</td>
-                <td>@objects.Unit.DisplayName</td>
-                <td>@objects.Suplier.DisplayName</td>
-                <td>@Html.ActionLink("Chi tiết", "Details", "Objectss", new {id = objects.Id}, null)   |<button data-objectss-id="@objects.Id" class="btn-link js-delete">Xóa</button></td>
-            </tr>
-        }
+    @foreach (var objects in Model)
+    {
+        <tr>
+            <td>@objects.Id</td>
+            <td>@objects.DisplayName</td>
+            <td>@objects.Count</td>
+            <td>@objects.Unit.DisplayName</td>
+            <td>@objects.Suplier.DisplayName</td>
+            <td>@Html.ActionLink("Chi tiết", "Details", "Objectss", new {id = objects.Id}, null)   |<button data-objectss-id="@objects.Id" class="btn-link js-delete">Xóa</button></td>
+        </tr>
+    }
     </tbody>
 </table>
+
 <!--Jquery Code-->
 @section scripts
 {

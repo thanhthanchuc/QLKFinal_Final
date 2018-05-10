@@ -1,11 +1,11 @@
 ﻿@model System.Linq.IQueryable<QLKFinal.Models.MoreModels.InputInfo>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Thông tin phiếu nhập";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
+<h2>Thông tin phiếu nhập</h2>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -25,14 +25,14 @@
         @foreach (var input in Model)
         {
             <tr>
-                <th>@input.Input.Id</th>
+                <th>@input.InputId</th>
                 <td>@input.Input.DisplayName</td>
                 <th>@input.Input.DateAdded.Value.ToShortDateString()</th>
                 <th>@input.Objectss.DisplayName</th>
                 <th>@input.Count</th>
                 <th>@input.Objectss.Unit.DisplayName</th>
-                <th>@input.InputPrice</th>
-                <th>@input.OutputPrice</th>
+                <th>@input.InputPrice vnđ</th>
+                <th>@input.OutputPrice vnđ</th>
                 <th>@input.Objectss.Suplier.DisplayName</th>
                 <th>@input.Objectss.DateAdded.Value.ToShortDateString()</th>
             </tr>

@@ -111,5 +111,10 @@ namespace QLKFinal.Controllers
 
             return View("ObjectForm", viewModel);
         }
+
+        public ActionResult PdfResult()
+        {
+            return View("ObjectForm");
+        }
     }
 }
