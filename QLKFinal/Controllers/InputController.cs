@@ -27,9 +27,14 @@ namespace QLKFinal.Controllers
         public ActionResult Index()
         {
             var input = _context.Inputs.ToList();
-            return View(input);
+
+            if (User.IsInRole("admin"))
+                return View("Index", input);
+
+            return View("Index - Copy", input);
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult New()
         {
             var viewModel = new InputFormViewModel
@@ -66,6 +71,7 @@ namespace QLKFinal.Controllers
             return RedirectToAction("Index", "Input");
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
             var input = _context.Inputs.SingleOrDefault(i => i.Id == id);

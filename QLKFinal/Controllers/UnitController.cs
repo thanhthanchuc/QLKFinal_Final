@@ -8,6 +8,7 @@ using QLKFinal.ViewModel.OrtherViewModel;
 
 namespace QLKFinal.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class UnitController : Controller
     {
         private ApplicationDbContext _context;

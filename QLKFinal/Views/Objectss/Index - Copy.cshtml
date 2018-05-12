@@ -1,0 +1,45 @@
+﻿@using QLKFinal.Models
+@model IEnumerable<QLKFinal.Models.Objectss>
+@{
+    ViewBag.Title = "Vật tư";
+}
+
+<h2>Vật tư</h2>
+
+
+<table id="objectss" class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>Mã vật tư</th>
+        <th>Tên vật tư</th>
+        <th>Số lượng</th>
+        <th>Đơn vị</th>
+        <th>Nhà cung cấp</th>
+        <th>Xem thêm</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var objects in Model)
+    {
+        <tr>
+            <td>@objects.Id</td>
+            <td>@objects.DisplayName</td>
+            <td>@objects.Count</td>
+            <td>@objects.Unit.DisplayName</td>
+            <td>@objects.Suplier.DisplayName</td>
+        <td>@Html.ActionLink("Chi tiết", "Details", "Objectss", new {id = objects.Id}, null)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<!--Jquery Code-->
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            var table = $("#objectss").DataTable();
+
+        });
+    </script>
+}

@@ -6,9 +6,7 @@
 }
 
 <h2>Thông tin các phiếu nhập</h2>
-<p>
-    @Html.ActionLink("Thêm mới", "New", "InputInfo", new {@class="btn btn-primary"})
-</p>
+
 <table id="inputinfo" class="table table-bordered table-hover">
     <thead>
     <tr>
@@ -29,7 +27,7 @@
             <th>@input.Input.DateAdded.Value.ToShortDateString()</th>
             <th>@input.Objectss.DisplayName</th>
             <th>@input.Objectss.Suplier.DisplayName</th>
-            <th>@Html.ActionLink("Chi tiết", "Deitals", "InputInfo", new {id = input.Id}, null) | <button data-inputinfo-id="inputinfo" class="btn-link js-delete">Xóa</button></th>
+            <th>@Html.ActionLink("Chi tiết", "Deitals", "InputInfo", new { id = input.Id }, null) </th>
         </tr>
     }
     </tbody>

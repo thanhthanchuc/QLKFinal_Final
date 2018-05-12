@@ -24,6 +24,7 @@ namespace QLKFinal.Controllers
             _context.Dispose();
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult New()
         {
             var viewModel = new SuplierFormViewModel
@@ -69,7 +70,9 @@ namespace QLKFinal.Controllers
         public ActionResult Index()
         {
             var suplier = _context.Supliers.ToList();
-            return View(suplier);
+            if (User.IsInRole("admin"))
+                return View("Index", suplier);
+            return View("Index - Copy",suplier);
         }
 
         public ActionResult Details(int id)
@@ -90,6 +93,7 @@ namespace QLKFinal.Controllers
             return View("OfSuplier", item);
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
             var suplier = _context.Supliers

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using QLKFinal.Models;
 using QLKFinal.ViewModel;
 using System.Data.Entity;
+using System.Web.Security;
 
 namespace QLKFinal.Controllers
 {
@@ -23,6 +24,7 @@ namespace QLKFinal.Controllers
             _context.Dispose();
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult New()
         {
             var units = _context.Units.ToList();
@@ -73,7 +75,10 @@ namespace QLKFinal.Controllers
                 .Include(u => u.Unit)
                 .Include(s => s.Suplier)
                 .ToList();
-            return View(item);
+            if (User.IsInRole("admin"))
+                return View("Index", item);
+
+            return View("Index - Copy", item);
         }
 
         //public ActionResult OfSuplier()
@@ -96,6 +101,7 @@ namespace QLKFinal.Controllers
             return View(item);
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
             var item = _context.Objectsses.SingleOrDefault(o => o.Id == id);

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<QLKFinal.Models.MoreModels.Input>
+
+@{
+    ViewBag.Title = "Input";
+}
+
+<h2>Phiếu nhập</h2>
+
+<table id="table" class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>Mã phiếu nhập</th>
+        <th>Tên phiếu nhập</th>
+        <th>Ngày nhập</th>
+        <th>Thêm</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var input in Model)
+    {
+        <tr>
+            <td>@input.Id</td>
+            <td>@input.DisplayName</td>
+            <td>@input.DateAdded.Value.ToShortDateString()</td>
+            <td>@Html.ActionLink("Chi tiết", "OfInput", "InputInfo", new{@input.Id}, null) </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script>
+        var table = $("#table").DataTable();
+
+        
+    </script>
+}
+

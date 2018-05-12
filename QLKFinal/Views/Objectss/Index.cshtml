@@ -25,7 +25,7 @@
     {
         <tr>
             <td>@objects.Id</td>
-            <td>@objects.DisplayName</td>
+            <td>@Html.ActionLink(objects.DisplayName, "Edit", "Objectss", new {id = objects.Id}, null)</td>
             <td>@objects.Count</td>
             <td>@objects.Unit.DisplayName</td>
             <td>@objects.Suplier.DisplayName</td>

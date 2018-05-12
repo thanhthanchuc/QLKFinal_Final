@@ -5,5 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Thông tin chi tiết @Model.Input.DisplayName</h2>
-
+<h2>Thông tin chi tiết của @Model.Input.DisplayName</h2>
+<ul>
+    <li>Mã phiếu nhập: @Model.Input.Id</li>
+    <li>Tên phiếu nhập: @Model.Input.DisplayName</li>
+    <li>Ngày nhập phiếu: @Model.Input.DateAdded.Value.ToShortDateString()</li>
+    <li>Tên vật phẩm: @Model.Objectss.DisplayName</li>
+    <li>Số lượng: @Model.Count @Model.Objectss.Unit.DisplayName</li>
+    <li>Nhà cung cấp: @Model.Objectss.Suplier.DisplayName</li>
+    <li>Giá nhập vào: @Model.InputPrice vnđ</li>
+    <li>Giá bán ra: @Model.OutputPrice vnđ</li>
+</ul>

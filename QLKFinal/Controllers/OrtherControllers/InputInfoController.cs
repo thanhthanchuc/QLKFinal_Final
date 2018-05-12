@@ -24,6 +24,7 @@ namespace QLKFinal.Controllers.OrtherControllers
             _context.Dispose();
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult New()
         {
             var objectss = _context.Objectsses
@@ -85,7 +86,11 @@ namespace QLKFinal.Controllers.OrtherControllers
                 .Include(o => o.Objectss)
                 .Include(s=>s.Objectss.Suplier)
                 .Include(u=>u.Objectss.Unit).ToList();
-            return View(item);
+
+            if (User.IsInRole("admin"))
+                return View("Index", item);
+
+            return View("Index - Copy", item);
         }
 
         public ActionResult OfInput(Input input)
@@ -118,8 +123,12 @@ namespace QLKFinal.Controllers.OrtherControllers
 
         public ActionResult Deitals(int id)
         {
-            var input = _context.InputInfos.Include(u => u.Input).Include(o => o.Objectss)
-                .Include(s => s.Objectss.Suplier).Include(u => u.Objectss.Unit).SingleOrDefault(i => i.Id == id);
+            var input = _context.InputInfos
+                .Include(u => u.Input)
+                .Include(o => o.Objectss)
+                .Include(s => s.Objectss.Suplier)
+                .Include(u => u.Objectss.Unit)
+                .SingleOrDefault(i => i.Id == id);
 
             if (input == null)
                 return HttpNotFound();

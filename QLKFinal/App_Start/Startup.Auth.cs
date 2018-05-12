@@ -54,15 +54,15 @@ namespace QLKFinal
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "asdasasssssdasdasd",
+               appSecret: "adsdasdassdasdas");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "570015345493-vlobbmguutbuclklal6426m1uu4qoban.apps.googleusercontent.com",
+                ClientSecret = "ulVNCSwfuJeYg70cMbe3ARvO"
+            });
         }
     }
 }
